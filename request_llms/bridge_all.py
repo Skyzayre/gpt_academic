@@ -200,6 +200,9 @@ model_info = {
         "token_cnt": get_token_num_gpt4,
     },
 
+    # 考虑到有的第三方接口可能还没适配新4-turbo可以直接传入图片
+    # 暂且维持4-turbo为纯文字模型
+    # 特在此注释，便于后续维护
     "gpt-4-turbo": {
         "fn_with_ui": chatgpt_ui,
         "fn_without_ui": chatgpt_noui,
@@ -209,9 +212,10 @@ model_info = {
         "token_cnt": get_token_num_gpt4,
     },
 
+    # vision模型，支持图片传入
     "gpt-4-turbo-2024-04-09": {
-        "fn_with_ui": chatgpt_ui,
-        "fn_without_ui": chatgpt_noui,
+        "fn_with_ui": chatgpt_vision_ui,
+        "fn_without_ui": chatgpt_vision_noui,
         "endpoint": openai_endpoint,
         "max_token": 128000,
         "tokenizer": tokenizer_gpt4,
@@ -232,7 +236,7 @@ model_info = {
         "fn_with_ui": chatgpt_vision_ui,
         "fn_without_ui": chatgpt_vision_noui,
         "endpoint": openai_endpoint,
-        "max_token": 4096,
+        "max_token": 128000,
         "tokenizer": tokenizer_gpt4,
         "token_cnt": get_token_num_gpt4,
     },
